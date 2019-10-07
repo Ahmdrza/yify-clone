@@ -8,6 +8,7 @@ span.ant-avatar.ant-avatar-square.ant-avatar-image {
 .container {
   max-width: 95%;
   margin: auto;
+  margin-top: 2%;
 }
 .ant-layout-header {
   background: #1890ff !important;

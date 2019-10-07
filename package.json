@@ -11,7 +11,7 @@
     "react-scripts": "3.1.2"
   },
   "scripts": {
-    "start": "webpack-dev-server --mode development --open --hot",
+    "start": "webpack-dev-server --mode development --open --hot --history-api-fallback",
     "build": "webpack --mode production",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

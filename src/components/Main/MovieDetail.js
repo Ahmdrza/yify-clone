@@ -45,7 +45,7 @@ export default class MovieDetail extends Component {
                 {
                     (this.props.visible) ? (
                         <Modal
-                            title={this.props.title_long}
+                            title={<a href={'https://www.google.com/search?q='+this.props.title_long.replace(/ /g, '+')} target="_blank">{this.props.title_long}</a>}
                             visible={this.state.visible}
                             onCancel={this.handleCancel}
                             width={850}

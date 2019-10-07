@@ -11,18 +11,8 @@ function App() {
       <Navbar />
       <div className="container">
       <Switch>
-        <Route exact path="/">
-          <Main />
-        </Route>
-        <Route path="/Search">
-          <SearchComponent />
-        </Route>
-        {/*<Route path="/:user">
-          <User />
-        </Route>
-        <Route>
-          <NoMatch />
-        </Route> */}
+        <Route path="/search/:query" component={SearchComponent} />
+        <Route exact path="/" component={Main} />
       </Switch>
       </div>
     </div>
