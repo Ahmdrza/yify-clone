@@ -2,13 +2,14 @@ import React, {Component} from 'react';
 import { List, Avatar, Icon  } from 'antd';
 import axios from 'axios';
 import MovieDetail from './MovieDetail';
+import { withRouter, Redirect } from 'react-router-dom';
 
-export default class Main extends Component {
+class Main extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            query_term:'',
-            page:2,
+            query_term:(this.props.search)?this.props.search:'',
+            page:1,
             order_by:'desc',
             movies:[],
             show_movie_detail:false,
@@ -18,14 +19,30 @@ export default class Main extends Component {
         this.updateMoviesList = this.updateMoviesList.bind(this);
         this.showMovieDetail = this.showMovieDetail.bind(this);
         this.hideModal = this.hideModal.bind(this);
+        this.getMovies = this.getMovies.bind(this);
     }
 
     componentDidMount() {
-        axios.get(`https://yts.lt/api/v2/list_movies.json?query_term=${this.state.query_term}&page=${this.state.page}&order_by=${this.state.order_by}`).then(response =>
+        this.getMovies();
+    }
+
+    getMovies() {
+        axios.get(`https://yts.lt/api/v2/list_movies.json?query_term=${this.state.query_term.replace(/-/g, ' ')}&page=${this.state.page}&order_by=${this.state.order_by}`).then(response =>
             this.updateMoviesList(response.data)
         ).catch( error => 
             console.log('error')
         )
+    }
+
+    componentDidUpdate(prevProps) {
+        if(prevProps.search !== this.props.search){
+           this.setState({
+               query_term:this.props.search,
+               loading:true
+           }, () => {
+            this.getMovies();
+           });
+        }
     }
 
     updateMoviesList(movies) {
@@ -71,3 +88,5 @@ export default class Main extends Component {
         )
     }
 }
+
+export default withRouter(Main);

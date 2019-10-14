@@ -17,7 +17,6 @@ export default class MovieDetail extends Component {
               visible: this.props.visible,
             });
         }
-        console.log(this.props);
     }
 
     handleCancel(){
