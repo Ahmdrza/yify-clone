@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
-import { List, Avatar, Icon  } from 'antd';
+import { List, Avatar, Icon,   } from 'antd';
 import axios from 'axios';
 import MovieDetail from './MovieDetail';
+import SearchFilters from '../Search/searchFilters';
 import { withRouter, Redirect } from 'react-router-dom';
 
 class Main extends Component {
@@ -14,24 +15,19 @@ class Main extends Component {
             movies:[],
             show_movie_detail:false,
             selected_movie:null,
-            loading:true
+            loading:true,
+            with_rt_ratings: true,
+            genre:''
         };
         this.updateMoviesList = this.updateMoviesList.bind(this);
         this.showMovieDetail = this.showMovieDetail.bind(this);
         this.hideModal = this.hideModal.bind(this);
         this.getMovies = this.getMovies.bind(this);
+        this.handleChange = this.handleChange.bind(this);
     }
 
     componentDidMount() {
         this.getMovies();
-    }
-
-    getMovies() {
-        axios.get(`https://yts.lt/api/v2/list_movies.json?query_term=${this.state.query_term.replace(/-/g, ' ')}&page=${this.state.page}&order_by=${this.state.order_by}`).then(response =>
-            this.updateMoviesList(response.data)
-        ).catch( error => 
-            console.log('error')
-        )
     }
 
     componentDidUpdate(prevProps) {
@@ -43,6 +39,14 @@ class Main extends Component {
             this.getMovies();
            });
         }
+    }
+
+    getMovies() {
+        axios.get(`https://yts.lt/api/v2/list_movies.json?query_term=${this.state.query_term.replace(/-/g, ' ')}&page=${this.state.page}&order_by=${this.state.order_by}&with_rt_ratings=${this.state.with_rt_ratings}&genre=${this.state.genre}`).then(response =>
+            this.updateMoviesList(response.data)
+        ).catch( error => 
+            console.log('error')
+        )
     }
 
     updateMoviesList(movies) {
@@ -64,16 +68,21 @@ class Main extends Component {
         })
     }
 
+    handleChange(e) {
+        console.log(e);
+    }
+
     render() {
         return (
             <div>
+                <SearchFilters />
                 <List
                 itemLayout="horizontal"
                 loading={this.state.loading}
                 dataSource={this.state.movies}
                 renderItem={item => (
                     <List.Item
-                        actions={[<a key="list-loadmore-edit">Magnet</a>, <a key="list-loadmore-more"><Icon type="download" /></a>]}
+                        actions={[<span><Icon type="star" theme="twoTone" twoToneColor="#b61619" /> {item.rating}</span>, <a key="list-loadmore-edit">Magnet</a>, <a key="list-loadmore-more"><Icon type="download" /></a>]}
                     >
                     <List.Item.Meta
                         avatar={<Avatar src={item.small_cover_image} />}
