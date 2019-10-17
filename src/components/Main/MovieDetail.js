@@ -83,7 +83,7 @@ export default class MovieDetail extends Component {
                                                     <Descriptions.Item label="Seeds"><Icon style={{ color: 'green' }} type="arrow-up" /> {torrent.seeds}</Descriptions.Item>
                                                     <Descriptions.Item label="Peers"><Icon style={{ color: 'red' }} type="arrow-down" /> {torrent.peers}</Descriptions.Item>
                                                     <Descriptions.Item label="Torrent"><a href={torrent.url}><Icon type="download" /></a></Descriptions.Item>
-                                                    <Descriptions.Item label="Magnet"><a href={this.getMangetLink(torrent)}>Magnet</a></Descriptions.Item>
+                                                    <Descriptions.Item label="Magnet"><a className="magnet-link" href={this.getMangetLink(torrent)}><img src="/public/magnet.svg" /></a></Descriptions.Item>
                                                 </Descriptions>
                                                 <Divider />
                                             </span>
