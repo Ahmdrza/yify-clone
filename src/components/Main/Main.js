@@ -87,7 +87,7 @@ class Main extends Component {
                     <List.Item.Meta
                         avatar={<Avatar src={item.small_cover_image} />}
                         title={<a onClick={this.showMovieDetail.bind(null, item)}>{item.title}</a>}
-                        description={item.summary}
+                        description={(item.summary.length > 331) ? item.summary.slice(0, 331).concat('...') : item.summary}
                     />
                     </List.Item>
                 )}

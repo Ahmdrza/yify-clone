@@ -70,3 +70,7 @@ span.ant-avatar.ant-avatar-square.ant-avatar-image {
 .magnet-link img {
   height:14px;
 }
+.ant-list-split .ant-list-item {
+  margin-bottom: 8px;
+  padding: 10px 8px 8px;
+}
