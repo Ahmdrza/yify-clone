@@ -82,7 +82,7 @@ class Main extends Component {
                 dataSource={this.state.movies}
                 renderItem={item => (
                     <List.Item
-                        actions={[<span title="Rotten Tomatoes Rating"><Icon type="star" theme="twoTone" twoToneColor="#b61619" /> {item.rating}</span>, <a className="magnet-link" title="Magnet Torrent"><img src="/public/magnet.svg" /></a>, <a title="Download Torrent"><Icon type="download" /></a>]}
+                        actions={[<span title="Rotten Tomatoes Rating"><Icon type="star" theme="twoTone" twoToneColor="#b61619" /> {item.rating}</span>]}
                     >
                     <List.Item.Meta
                         avatar={<Avatar src={item.small_cover_image} />}
