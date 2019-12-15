@@ -74,3 +74,16 @@ span.ant-avatar.ant-avatar-square.ant-avatar-image {
   margin-bottom: 8px;
   padding: 10px 8px 8px;
 }
+
+.ant-card-meta-title {
+  color: #b61619 !important;
+  cursor: pointer;
+}
+
+.card-icon:hover svg {
+  fill: #b61619 !important;
+}
+
+.results-loading {
+  width: 100%;
+}
