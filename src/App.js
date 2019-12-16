@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
-import Main from './components/Main/Main';
+// import Main from './components/Main/Main';
+import Main from './components/Main/index';
 import SearchResults from './components/Search/SearchResults';
 import Navbar from './components/Header/header';
 import { Route, Switch } from "react-router";
@@ -11,7 +12,6 @@ function App() {
       <Navbar />
       <div className="container">
       <Switch>
-        <Route path="/search/:query" component={SearchResults} />
         <Route exact path="/" component={Main} />
       </Switch>
       </div>
