@@ -5,6 +5,7 @@ import MovieDetail from './MovieDetail';
 import SearchFilters from '../Search/searchFilters';
 import { withRouter, Redirect } from 'react-router-dom';
 import MovieCard from './MovieCard';
+import TrailerModal from './TrailerModal';
 
 const notifyFavFunct = (type = 'success') => {
     notification[type]({
@@ -31,6 +32,8 @@ const Main = () => {
     const [selected_movie, setSelectedMovie] = useState(null);
     const [show_movie_detail, setShowMovieDetail] = useState(false);
     const [TotalMovies, setTotalMovies] = useState(0);
+    const [isTrailerModalOpen, setIsTrailerModalOpen] = useState(false);
+    const [ytVideoId, setytVideoId] = useState(null)
 
     const getMovies = () => {
         axios.get(`https://yts.lt/api/v2/list_movies.json?query_term=${filters.query_term.replace(/-/g, ' ')}&page=${filters.page}&limit=${filters.limit}&order_by=${filters.order_by}&with_rt_ratings=${filters.with_rt_ratings}&genre=${filters.genre}&sort_by=${filters.sort_by}`).then(response => {
@@ -96,6 +99,16 @@ const Main = () => {
         });
     };
 
+    const watchTrailer = (yt_id) => {
+        setytVideoId(yt_id);
+        setIsTrailerModalOpen(true);
+    }
+
+    const hideTrailerModal = () => {
+        setIsTrailerModalOpen(false);
+        setytVideoId(null);
+    }
+
     useEffect( () => {
         setLoading(true)
         getMovies();
@@ -120,7 +133,7 @@ const Main = () => {
                         {
                             movies.map((movie, index) => (
                                 <Col xs={24} sm={8} md={6} lg={4} xl={4} key={'mc'+index} style={{marginBottom: "12px"}}>
-                                    <MovieCard movie={movie} showMovieDetail={showMovieDetail} toggleFav={toggleFav} isFav={isFav} />
+                                    <MovieCard movie={movie} showMovieDetail={showMovieDetail} toggleFav={toggleFav} isFav={isFav} watchTrailer={watchTrailer} />
                                 </Col>
                             ))
                         }
@@ -129,6 +142,7 @@ const Main = () => {
             }
             
             <MovieDetail visible={show_movie_detail} {...selected_movie} hideModal={hideModal}/>
+            <TrailerModal visible={isTrailerModalOpen} videoId={ytVideoId} hideModal={!isTrailerModalOpen} handleCancel={hideTrailerModal}/>
         </div>
     )
 };

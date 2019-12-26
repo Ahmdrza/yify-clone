@@ -87,3 +87,11 @@ span.ant-avatar.ant-avatar-square.ant-avatar-image {
 .results-loading {
   width: 100%;
 }
+
+.ant-pagination-item-active, .ant-pagination-item:focus, .ant-pagination-item:hover {
+  border-color: #B61619 !important;
+}
+
+.ant-pagination-jump-prev .ant-pagination-item-container .ant-pagination-item-link-icon, .ant-pagination-jump-next .ant-pagination-item-container .ant-pagination-item-link-icon {
+  color: #B61619 !important;
+}
