@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { Row, Col, Modal, Button, List, Avatar, Icon, Tag, Tabs, Divider, Descriptions, Badge } from 'antd';
 const { TabPane } = Tabs;
+import img from '../../../public/magnet.svg';
 export default class MovieDetail extends Component {
     constructor(props) {
         super(props);
@@ -83,7 +84,7 @@ export default class MovieDetail extends Component {
                                                     <Descriptions.Item label="Seeds"><Icon style={{ color: 'green' }} type="arrow-up" /> {torrent.seeds}</Descriptions.Item>
                                                     <Descriptions.Item label="Peers"><Icon style={{ color: 'red' }} type="arrow-down" /> {torrent.peers}</Descriptions.Item>
                                                     <Descriptions.Item label="Torrent"><a href={torrent.url}><Icon type="download" /></a></Descriptions.Item>
-                                                    <Descriptions.Item label="Magnet"><a className="magnet-link" href={this.getMangetLink(torrent)}><img src="/yify-clone/public/magnet.svg" /></a></Descriptions.Item>
+                                                    <Descriptions.Item label="Magnet"><a className="magnet-link" href={this.getMangetLink(torrent)}><img src="/public/magnet.svg" /></a></Descriptions.Item>
                                                 </Descriptions>
                                                 <Divider />
                                             </span>

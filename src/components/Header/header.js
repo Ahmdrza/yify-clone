@@ -17,7 +17,6 @@ export default class Navbar extends Component {
                     style={{ lineHeight: '64px', background: '#1890ff' }}
 
                 >
-                <SearchComponent />
                 </Menu>
                 </Header>
             </div>

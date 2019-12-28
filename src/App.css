@@ -95,3 +95,7 @@ span.ant-avatar.ant-avatar-square.ant-avatar-image {
 .ant-pagination-jump-prev .ant-pagination-item-container .ant-pagination-item-link-icon, .ant-pagination-jump-next .ant-pagination-item-container .ant-pagination-item-link-icon {
   color: #B61619 !important;
 }
+
+.search-keyword input {
+  box-shadow: unset !important;
+}

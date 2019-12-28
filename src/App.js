@@ -2,7 +2,6 @@ import React from 'react';
 import './App.css';
 // import Main from './components/Main/Main';
 import Main from './components/Main/index';
-import SearchResults from './components/Search/SearchResults';
 import Navbar from './components/Header/header';
 import { Route, Switch } from "react-router";
 
