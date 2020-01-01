@@ -28,9 +28,6 @@ const MovieCard = ({movie, showMovieDetail, toggleFav, isFav, watchTrailer}) => 
                 <Icon type="star" className="card-icon" />
             }
         </Tooltip>,
-        <Tooltip title={(movie.summary) ? ((movie.summary.length > 300) ? movie.summary.slice(0, 300)+'...' : movie.summary) : 'N/A'}>
-            <Icon type="info-circle" className="card-icon"/>
-        </Tooltip>,
         (movie.yt_trailer_code) ? 
         <Tooltip title={(movie.yt_trailer_code) ? 'Watch Trailer' : 'N/A'} onClick={() => {
             watchTrailer(movie.yt_trailer_code)
@@ -44,6 +41,7 @@ const MovieCard = ({movie, showMovieDetail, toggleFav, isFav, watchTrailer}) => 
             showMovieDetail(movie)
         }}
         title={movie.title_long}
+        description={(movie.summary) ? ((movie.summary.length > 150) ? movie.summary.slice(0, 150)+'...' : movie.summary) : 'Description not available.'}
         />
     </Card>
 );

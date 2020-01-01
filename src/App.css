@@ -69,6 +69,8 @@ span.ant-avatar.ant-avatar-square.ant-avatar-image {
 }
 .magnet-link img {
   height:14px;
+  height: 13px;
+  margin-bottom: 2px;
 }
 .ant-list-split .ant-list-item {
   margin-bottom: 8px;
@@ -98,4 +100,15 @@ span.ant-avatar.ant-avatar-square.ant-avatar-image {
 
 .search-keyword input {
   box-shadow: unset !important;
+}
+
+.ant-card-meta-title {
+  word-break: break-all !important;
+  overflow: hidden !important;
+  white-space: unset !important;
+  height: 49px;
+}
+
+.ant-card-meta-description {
+  height: 147px !important;
 }
