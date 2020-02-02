@@ -39,7 +39,7 @@ const Main = () => {
     const [queryString, setQueryString] = useState('');
 
     const getMovies = () => {
-        axios.get(`https://yts.lt/api/v2/list_movies.json?query_term=${filters.query_term.replace(/-/g, ' ')}&page=${filters.page}&limit=${filters.limit}&order_by=${filters.order_by}&with_rt_ratings=${filters.with_rt_ratings}&genre=${filters.genre}&sort_by=${filters.sort_by}&minimum_rating=${filters.minimum_rating}`).then(response => {
+        axios.get(`https://yts.mx/api/v2/list_movies.json?query_term=${filters.query_term.replace(/-/g, ' ')}&page=${filters.page}&limit=${filters.limit}&order_by=${filters.order_by}&with_rt_ratings=${filters.with_rt_ratings}&genre=${filters.genre}&sort_by=${filters.sort_by}&minimum_rating=${filters.minimum_rating}`, {crossDomain : true}).then(response => {
             if(response.data.data.movie_count > 0) {
                 updateMoviesList(response.data.data.movies)
             } else {
